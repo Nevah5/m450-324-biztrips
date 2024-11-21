@@ -26,7 +26,6 @@ export default function App() {
     }
 
     function removeFromWishlist(item) {
-        console.log(item);
         setWishlist((trip) => trip.filter((t) => t.id !== item.id));
 
     }
