@@ -6,7 +6,7 @@ on:
       - README.md
       - LICENSE
       - CODEOWNERS
-      - .gitingore
+      - .gitignore
       - .github/**
 
 name: Testing
