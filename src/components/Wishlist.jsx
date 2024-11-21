@@ -120,7 +120,7 @@ function WishlistItem(props) {
           // onClick={ () => removeFromWishlist(props.item) } // App deleteItem
 
 
-            onClick={(item) => removeFromWishlist(item)}
+            onClick={() => removeFromWishlist(item)}
         >
           delete Item
         </button>
