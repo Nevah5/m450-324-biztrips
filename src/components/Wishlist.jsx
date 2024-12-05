@@ -55,7 +55,7 @@ export default function Wishlist({ wishlist, removeFromWishlist, clearWishlist }
                     <th scope="col" />
                     <th scope="col">
                       <button
-                        className="btn btn-outline-danger"
+                        className="btn btn-outline-danger float-right"
                         onClick={clearWishlist}
                         disabled={itemsMapped.length === 0}
                         data-test="clear-wishlist"
@@ -106,11 +106,9 @@ function WishlistItem(props) {
         </figure>
       </td>
       <td className="price-wrap price"></td>
-      <td className="text-right">
-        <button className="btn btn-outline-success fa fa-heart fa-xs" />
-        <i className="fa-regular fa-heart"></i>
+      <td className="text-right flex">
         <button
-            className="btn btn-outline-danger"
+            className="btn btn-outline-danger float-right"
             onClick={() => removeFromWishlist(item)}
             data-test="remove-from-wishlist"
         >
