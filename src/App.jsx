@@ -46,7 +46,7 @@ export default function App() {
             <div>
                 <Header/>
                 <main>
-                    <h1>Welcome to biztrips Happy new Year-react - 2024</h1>
+                    <h1 data-test="app-title">Welcome to biztrips Happy new Year-react - 2024</h1>
 
                     <Wishlist wishlist={wishlist} removeFromWishlist={removeFromWishlist}
                               clearWishlist={() => clearWishlist()}/>

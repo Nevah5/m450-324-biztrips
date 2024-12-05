@@ -17,7 +17,7 @@ export default function Wishlist({ wishlist, removeFromWishlist, clearWishlist }
     <tr>
       <td colSpan="4">
         {" "}
-        <p className="alert alert-info">Wishlist is empty</p>
+        <p className="alert alert-info" data-test="wishlist-empty">Wishlist is empty</p>
       </td>
     </tr>
   );
@@ -83,11 +83,8 @@ function WishlistItem(props) {
   // props
   let { id, title, description, startTrip, endTrip } = item;
 
-  console.log("WishlistItem", props);
-
-  // console.log("WishlistItem", item);
   return (
-    <tr key={id}>
+    <tr key={id} data-test="wishlist-item">
       <td>
         <figure className="media">
 
@@ -116,11 +113,9 @@ function WishlistItem(props) {
         <button className="btn btn-outline-success fa fa-heart fa-xs" />
         <i className="fa-regular fa-heart"></i>
         <button
-          className="btn btn-outline-danger"
-          // onClick={ () => removeFromWishlist(props.item) } // App deleteItem
-
-
+            className="btn btn-outline-danger"
             onClick={() => removeFromWishlist(item)}
+            data-test="remove-from-wishlist"
         >
           delete Item
         </button>
