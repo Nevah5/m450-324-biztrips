@@ -54,14 +54,11 @@ export default function Wishlist({ wishlist, removeFromWishlist, clearWishlist }
                     </th>
                     <th scope="col" />
                     <th scope="col">
-                     { <button
-                        //onClick={heartItem}
-                        className="btn btn-outline-success fa fa-heart fa-xs"
-                      />}
                       <button
                         className="btn btn-outline-danger"
                         onClick={clearWishlist}
                         disabled={itemsMapped.length === 0}
+                        data-test="clear-wishlist"
                       >
                         empty wishlist
                       </button>

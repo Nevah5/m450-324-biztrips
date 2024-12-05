@@ -71,10 +71,24 @@ describe("template spec", () => {
 
   it("A user can remove a business trip from his wishlist", () => {
     cy.addWishlist(1);
-    cy.checkWishlistNotEmpty()
+    cy.checkWishlistNotEmpty();
     cy.removeWishlist(0);
     cy.checkWishlistEmpty();
   });
 
-  it("A user can remove all business trips from his wishlist.", () => {});
+  it("A user can remove all business trips from his wishlist", () => {
+    cy.addWishlist(0);
+    cy.addWishlist(1);
+    cy.checkWishlistNotEmpty();
+    cy.get("[data-test='clear-wishlist']").click();
+    cy.checkWishlistEmpty();
+  });
+
+  it("A user can add a business trip just once", () => {
+    cy.addWishlist(0);
+    cy.addWishlist(0);
+    cy.get("[data-test='wishlist-item']")
+      .should("contain.text", "BT01")
+      .and("have.length", 1);
+  });
 });
