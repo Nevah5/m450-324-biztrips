@@ -2,8 +2,6 @@ name: PR Branch Check
 
 on:
   pull_request:
-    branches:
-      - main
 
 jobs:
   check-branch:
