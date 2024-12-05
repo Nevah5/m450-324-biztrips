@@ -83,7 +83,7 @@ function Trip({ addToWishlist, ...props }) {
   let { id, title, description } = trip;
 
   return (
-    <div className="col-sm-6 col-md-4 col-lg-3">
+    <div className="col-sm-6 col-md-4 col-lg-3" data-testid="trip">
       <figure className="card card-product">
         <div className="img-wrap">
           <img src={"images/items/" + trip.id + ".jpg"} alt="name " />
