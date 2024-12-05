@@ -41,6 +41,7 @@ function TripList({ addToWishlist }) {
           <label htmlFor="month">Filter by Month:</label>
           <select
             id="month"
+            data-testid="month"
             value={month} // controlled component
             onChange={(e) => {
               //debugger;
