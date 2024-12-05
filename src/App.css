@@ -193,6 +193,11 @@ form > div {
   margin-bottom: 20px;
 }
 
+.float-right {
+  float: right;
+  margin-right: 10px;
+}
+
 .lds-container {
   display: flex; 
   align-items: center;
