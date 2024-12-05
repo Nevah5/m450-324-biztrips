@@ -17,7 +17,7 @@ export default function Wishlist({ wishlist, removeFromWishlist, clearWishlist }
     <tr>
       <td colSpan="4">
         {" "}
-        <p className="alert alert-info">Wishlist is empty</p>
+        <p className="alert alert-info" data-test="wishlist-empty">Wishlist is empty</p>
       </td>
     </tr>
   );
@@ -58,6 +58,7 @@ export default function Wishlist({ wishlist, removeFromWishlist, clearWishlist }
                         className="btn btn-outline-danger float-right"
                         onClick={clearWishlist}
                         disabled={itemsMapped.length === 0}
+                        data-test="clear-wishlist"
                       >
                         empty wishlist
                       </button>
@@ -80,7 +81,7 @@ function WishlistItem(props) {
   let { id, title, description, startTrip, endTrip } = item;
 
   return (
-    <tr key={id}>
+    <tr key={id} data-test="wishlist-item">
       <td>
         <figure className="media">
 
@@ -107,8 +108,9 @@ function WishlistItem(props) {
       <td className="price-wrap price"></td>
       <td className="text-right flex">
         <button
-          className="btn btn-outline-danger float-right"
-          onClick={() => removeFromWishlist(item)}
+            className="btn btn-outline-danger float-right"
+            onClick={() => removeFromWishlist(item)}
+            data-test="remove-from-wishlist"
         >
           delete Item
         </button>
