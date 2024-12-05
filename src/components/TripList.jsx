@@ -18,10 +18,6 @@ function TripList({ addToWishlist }) {
     });
   }, []);
 
-  const tripsMapped = trips.map((trip, index) => (
-    <Trip addToWishlist={addToWishlist} trip={trip} key={trip.id} />
-  ));
-
   const empty = (
     <section>
       <p className="alert alert-info">Productlist is empty</p>
@@ -31,7 +27,11 @@ function TripList({ addToWishlist }) {
   // if month selected then filter the trips from month === month
   const filteredTrips = month
     ? trips.filter((t) => t.startTrip[1] === parseInt(month))
-    : tripsMapped;
+    : trips;
+
+  const tripsMapped = (filteredTrips.length > 0 ? filteredTrips : trips).map(
+    (trip) => <Trip addToWishlist={addToWishlist} trip={trip} key={trip.id} />
+  );
 
   return (
     <div className="container">
