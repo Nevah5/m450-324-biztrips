@@ -1,9 +1,0 @@
-{
-  "paths": {
-    "/trips": {
-      "get": {
-        "lambdaFunction": "jsonServer"
-      }
-    }
-  }
-}
