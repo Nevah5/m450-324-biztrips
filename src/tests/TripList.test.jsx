@@ -1,12 +1,16 @@
 import { render, shallow, screen, waitFor, fireEvent } from "@testing-library/react";
 import TripList from "../components/TripList";
 import trips from '../../db.json';
+import Wishlist from "../components/Wishlist";
+import App from "../App";
 
-test("A user can list all business trips", async () => {
+beforeEach(() => {
     jest.spyOn(global, "fetch").mockImplementation(() => Promise.resolve({
         json: () => Promise.resolve(trips.trips)
     }));
+})
 
+test("A user can list all business trips", async () => {
     render(<TripList addToWishlist={() => {}} />);
 
     await waitFor(() => {
@@ -15,10 +19,6 @@ test("A user can list all business trips", async () => {
 });
 
 test("A user can filter the list of business trips by month", async () => {
-    jest.spyOn(global, "fetch").mockImplementation(() => Promise.resolve({
-        json: () => Promise.resolve(trips.trips)
-    }));
-
     render(<TripList addToWishlist={() => {}}/>);
 
     const month = screen.getByTestId("month");
@@ -32,3 +32,18 @@ test("A user can filter the list of business trips by month", async () => {
     })
 });
 
+test("A user can add a business trip to his wishlist", async () => {
+    render(<App/>)
+
+    await waitFor(() => {
+        const trips = screen.getAllByTestId('trip').slice(0, 2);
+
+        trips.forEach(trip => {
+            const button = trip.querySelector("button");
+            button.click()
+        })
+
+        expect(screen.getAllByTestId("whishlist-item")).toHaveLength(2)
+    })
+    
+});

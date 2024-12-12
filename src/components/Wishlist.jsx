@@ -80,7 +80,7 @@ function WishlistItem(props) {
   let { id, title, description, startTrip, endTrip } = item;
 
   return (
-    <tr key={id}>
+    <tr data-testid="whishlist-item" key={id}>
       <td>
         <figure className="media">
 
