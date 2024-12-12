@@ -8,6 +8,7 @@ on:
       - CODEOWNERS
       - .gitignore
       - .github/**
+      - amplify/**
 
 name: Testing
 
@@ -26,7 +27,7 @@ jobs:
       - name: Run tests
         run: |
           npm run test
-  test-component: 
+  test-component:
     needs: test-unit
     runs-on: ubuntu-latest
     steps:
@@ -41,7 +42,7 @@ jobs:
       - name: Run tests
         run: |
           npm run test-component
-  test-e2e: 
+  test-e2e:
     needs: test-component
     runs-on: ubuntu-latest
     steps:
@@ -56,4 +57,3 @@ jobs:
       - name: Run tests
         run: |
           npm run start & npm run test-e2e
-  
