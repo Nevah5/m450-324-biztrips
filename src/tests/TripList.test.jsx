@@ -90,3 +90,18 @@ test("A user can remove all business trips from his wishlist.", () => {
 
     expect(clearWishlist).toHaveBeenCalled();
 });
+
+test("A user can add a business trip just once.", async () => {
+    render(<App/>)
+
+    await waitFor(() => {
+        const trip = screen.getAllByTestId('trip')[0];
+
+        const button = trip.querySelector("button");
+
+        button.click();
+        button.click();
+
+        expect(screen.getAllByTestId("whishlist-item")).toHaveLength(1)
+    })
+})
