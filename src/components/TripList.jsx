@@ -41,6 +41,7 @@ function TripList({ addToWishlist }) {
           <label htmlFor="month">Filter by Month:</label>
           <select
             id="month"
+            data-testid="month"
             value={month} // controlled component
             onChange={(e) => {
               //debugger;
@@ -84,7 +85,7 @@ function Trip({ addToWishlist, ...props }) {
   let { id, title, description } = trip;
 
   return (
-    <div className="col-sm-6 col-md-4 col-lg-3" data-test="trip-item">
+    <div className="col-sm-6 col-md-4 col-lg-3" data-test="trip-item" data-testid="trip">
       <figure className="card card-product">
         <div className="img-wrap">
           <img src={"images/items/" + trip.id + ".jpg"} alt="name " />

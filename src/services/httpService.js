@@ -4,7 +4,7 @@ export class HttpService {
     }
 
     async getAllTrips() {
-        const trips = await fetch(`${this.baseUrl}/trips`).then((res) => res.json());
-        return trips;
+        const response = await fetch(`${this.baseUrl}/trips`)
+        return await response.json();
     }
 }

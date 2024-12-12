@@ -81,7 +81,7 @@ function WishlistItem(props) {
   let { id, title, description, startTrip, endTrip } = item;
 
   return (
-    <tr key={id} data-test="wishlist-item">
+    <tr data-testid="whishlist-item" key={id} data-test="wishlist-item">
       <td>
         <figure className="media">
 
@@ -108,6 +108,7 @@ function WishlistItem(props) {
       <td className="price-wrap price"></td>
       <td className="text-right flex">
         <button
+          data-testid="wishlist-remove-btn"
             className="btn btn-outline-danger float-right"
             onClick={() => removeFromWishlist(item)}
             data-test="remove-from-wishlist"
