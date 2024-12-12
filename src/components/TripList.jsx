@@ -10,7 +10,7 @@ function TripList({ addToWishlist }) {
   const months = ["Idle", "Jan", "Feb", "March", "April", "Mai", "June"];
 
   useEffect(() => {
-    const httpService = new HttpService();
+    const httpService = new HttpService(process.env.REACT_APP_API_URL);
     setLoading(true);
     httpService.getAllTrips().then((data) => {
       setTrips(data);
