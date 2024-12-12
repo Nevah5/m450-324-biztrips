@@ -107,6 +107,7 @@ function WishlistItem(props) {
       <td className="price-wrap price"></td>
       <td className="text-right flex">
         <button
+          data-testid="wishlist-remove-btn"
           className="btn btn-outline-danger float-right"
           onClick={() => removeFromWishlist(item)}
         >

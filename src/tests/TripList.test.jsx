@@ -47,3 +47,24 @@ test("A user can add a business trip to his wishlist", async () => {
     })
     
 });
+
+test("A user can remove a business trip from his wishlist", () => {
+    const whishlist = [
+        {
+            id: 1,
+            title: "Test",
+            description: "This is a Test entry",
+            startTrip: [2021, 1, 13, 0, 0],
+            endTrip: [2021, 1, 13, 16, 0]
+        }
+    ]
+
+    const removeFromWishlist = jest.fn()
+    render(<Wishlist wishlist={whishlist} removeFromWishlist={removeFromWishlist}/>)
+
+    const deleteItem = screen.getByTestId("wishlist-remove-btn");
+
+    deleteItem.click()
+
+    expect(removeFromWishlist).toHaveBeenCalled()
+});
