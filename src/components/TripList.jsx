@@ -47,6 +47,7 @@ function TripList({ addToWishlist }) {
               //debugger;
               setMonth(e.target.value);
             }}
+            data-test="filter-month"
           >
             <option value="">All Months</option>
             <option value="1">January</option>
@@ -84,7 +85,7 @@ function Trip({ addToWishlist, ...props }) {
   let { id, title, description } = trip;
 
   return (
-    <div className="col-sm-6 col-md-4 col-lg-3" data-testid="trip">
+    <div className="col-sm-6 col-md-4 col-lg-3" data-test="trip-item" data-testid="trip">
       <figure className="card card-product">
         <div className="img-wrap">
           <img src={"images/items/" + trip.id + ".jpg"} alt="name " />
@@ -100,6 +101,7 @@ function Trip({ addToWishlist, ...props }) {
               type="button"
               className="btn btn-link btn-outline"
               onClick={() => addToWishlist(trip)}
+              data-test="add-to-wishlist"
             >
               <i className="fa fa-shopping-cart" /> Add to Wishlist
             </button>
