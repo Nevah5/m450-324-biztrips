@@ -1,4 +1,4 @@
-import { render, shallow, screen, waitFor, fireEvent } from "@testing-library/react";
+import { render, shallow, screen, waitFor, fireEvent, getByText } from "@testing-library/react";
 import TripList from "../components/TripList";
 import trips from '../../db.json';
 import Wishlist from "../components/Wishlist";
@@ -67,4 +67,26 @@ test("A user can remove a business trip from his wishlist", () => {
     deleteItem.click()
 
     expect(removeFromWishlist).toHaveBeenCalled()
+});
+
+test("A user can remove all business trips from his wishlist.", () => {
+    const wishlist = [
+        {
+            id: 1,
+            title: "Test",
+            description: "This is a Test entry",
+            startTrip: [2021, 1, 13, 0, 0],
+            endTrip: [2021, 1, 13, 16, 0]
+        }
+    ]
+
+    const clearWishlist = jest.fn();
+
+    render(<Wishlist clearWishlist={clearWishlist} wishlist={wishlist}/>);
+
+    const button = screen.getByText('empty wishlist');
+
+    button.click()
+
+    expect(clearWishlist).toHaveBeenCalled();
 });
