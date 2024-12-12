@@ -1,11 +1,13 @@
-import React, {} from "react";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 // deconstruct props
-export default function Wishlist({ wishlist, removeFromWishlist, clearWishlist }) {
-
+export default function Wishlist({
+  wishlist,
+  removeFromWishlist,
+  clearWishlist,
+}) {
   // as constant variant 2
   const itemsMapped = wishlist.map((item, index) => (
-
     <WishlistItem
       removeFromWishlist={removeFromWishlist}
       item={item}
@@ -17,7 +19,9 @@ export default function Wishlist({ wishlist, removeFromWishlist, clearWishlist }
     <tr>
       <td colSpan="4">
         {" "}
-        <p className="alert alert-info" data-test="wishlist-empty">Wishlist is empty</p>
+        <p className="alert alert-info" data-test="wishlist-empty">
+          Wishlist is empty
+        </p>
       </td>
     </tr>
   );
@@ -25,7 +29,9 @@ export default function Wishlist({ wishlist, removeFromWishlist, clearWishlist }
   return (
     <div className="container">
       <>
-        <h2 className="h4">Wishlist</h2>
+        <h2 className="h4" data-test="wishlist-header">
+          Wishlist
+        </h2>
         <div className="row">
           <div className="col-sm-12">
             <div className="card table-responsive">
@@ -42,14 +48,14 @@ export default function Wishlist({ wishlist, removeFromWishlist, clearWishlist }
                     </th>
                   </tr>
                 </thead>
-                <tbody>{itemsMapped.length > 0 ? itemsMapped : empty}</tbody>
+                <tbody data-test="wishlist-body">
+                  {itemsMapped.length > 0 ? itemsMapped : empty}
+                </tbody>
                 <tfoot>
                   <tr>
-
                     <th scope="col">
                       <dl className="dlist-align">
                         <dt>Total </dt>
-
                       </dl>
                     </th>
                     <th scope="col" />
@@ -84,7 +90,6 @@ function WishlistItem(props) {
     <tr key={id} data-test="wishlist-item">
       <td>
         <figure className="media">
-
           <div className="img-wrap">
             <img
               className="img-thumbnail img-xs"
@@ -110,9 +115,9 @@ function WishlistItem(props) {
         <button className="btn btn-outline-success fa fa-heart fa-xs" />
         <i className="fa-regular fa-heart"></i>
         <button
-            className="btn btn-outline-danger"
-            onClick={() => removeFromWishlist(item)}
-            data-test="remove-from-wishlist"
+          className="btn btn-outline-danger"
+          onClick={() => removeFromWishlist(item)}
+          data-test="remove-from-wishlist"
         >
           delete Item
         </button>

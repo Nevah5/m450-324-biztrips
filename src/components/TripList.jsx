@@ -36,7 +36,7 @@ function TripList({ addToWishlist }) {
   return (
     <div className="container">
       <section>
-        <h2 className="h4">Triplist-Catalog</h2>
+        <h2 data-test="triplist-header" className="h4">Triplist-Catalog</h2>
         <section id="filters">
           <label htmlFor="month">Filter by Month:</label>
           <select
