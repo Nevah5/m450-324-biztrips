@@ -6,9 +6,6 @@ export const handler = async (
   try {
     return {
       statusCode: 200,
-      // body: JSON.stringify({
-      //     message: await res.text(),
-      // }),
       body: JSON.stringify([
         {
           id: 1,
