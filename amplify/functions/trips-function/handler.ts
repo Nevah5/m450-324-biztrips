@@ -6,6 +6,10 @@ export const handler = async (
   try {
     return {
       statusCode: 200,
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
       body: JSON.stringify([
         {
           id: 1,
