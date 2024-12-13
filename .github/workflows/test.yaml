@@ -26,9 +26,9 @@ jobs:
           npm install
       - name: Run tests
         run: |
-          npm run test -- --silent --maxWorkers=2
+          npm run test -- --silent --maxWorkers=2gi
   test-component:
-    needs: test-unit
+    # needs: test-unit
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -43,7 +43,7 @@ jobs:
         run: |
           npm run test-component
   test-e2e:
-    needs: test-component
+    # needs: test-component
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
