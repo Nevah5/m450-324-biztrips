@@ -41,7 +41,7 @@ jobs:
           npm install
       - name: Run tests
         run: |
-          npm run test-component -- --silent --maxWorkers=4
+          npm run test-component
   test-e2e:
     needs: test-component
     runs-on: ubuntu-latest
@@ -56,4 +56,4 @@ jobs:
           npm install
       - name: Run tests
         run: |
-          npm run start & npm run test-e2e -- --silent --maxWorkers=4
+          npm run start & npm run test-e2e
