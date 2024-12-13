@@ -26,7 +26,7 @@ jobs:
           npm install
       - name: Run tests
         run: |
-          npm run test -- --silent --maxWorkers=4
+          npm run test -- --silent --maxWorkers=2
   test-component:
     needs: test-unit
     runs-on: ubuntu-latest
