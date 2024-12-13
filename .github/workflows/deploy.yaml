@@ -82,3 +82,16 @@ jobs:
         run: |
           git tag ${{ steps.set_version.outputs.VERSION }}
           git push --tags
+  create-release:
+    runs-on: ubuntu-latest
+    name: Create release
+    needs: versioning
+    if: github.ref_name == 'main'
+    steps:
+      - name: "Create release"
+        uses: ncipollo/release-action@v1
+        with:
+          name: Release ${{ needs.versioning.outputs.VERSION }}
+          tag: ${{ needs.versioning.outputs.VERSION }}
+          generateReleaseNotes: true
+          makeLatest: true
