@@ -85,6 +85,8 @@ jobs:
   create-release:
     runs-on: ubuntu-latest
     name: Create release
+    permissions:
+      contents: write
     needs: versioning
     if: github.ref_name == 'main'
     steps:
