@@ -5,17 +5,24 @@ import { HttpService } from "../services/httpService";
 // functional component ProductList, deconstruct props!
 function TripList({ addToWishlist }) {
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [month, setMonth] = useState("");
   const [trips, setTrips] = useState([]);
   const months = ["Idle", "Jan", "Feb", "March", "April", "Mai", "June"];
 
   useEffect(() => {
-    const httpService = new HttpService();
+    const httpService = new HttpService(process.env.REACT_APP_API_URL);
     setLoading(true);
-    httpService.getAllTrips().then((data) => {
-      setTrips(data);
-      setLoading(false);
-    });
+    httpService
+      .getAllTrips()
+      .then((data) => {
+        setTrips(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setError(error);
+        setLoading(false);
+      });
   }, []);
 
   const empty = (
@@ -33,19 +40,27 @@ function TripList({ addToWishlist }) {
     (trip) => <Trip addToWishlist={addToWishlist} trip={trip} key={trip.id} />
   );
 
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
   return (
     <div className="container">
       <section>
-        <h2 className="h4">Triplist-Catalog</h2>
+        <h2 data-test="triplist-header" className="h4">
+          Triplist-Catalog
+        </h2>
         <section id="filters">
           <label htmlFor="month">Filter by Month:</label>
           <select
             id="month"
+            data-testid="month"
             value={month} // controlled component
             onChange={(e) => {
               //debugger;
               setMonth(e.target.value);
             }}
+            data-test="filter-month"
           >
             <option value="">All Months</option>
             <option value="1">January</option>
@@ -83,7 +98,11 @@ function Trip({ addToWishlist, ...props }) {
   let { id, title, description } = trip;
 
   return (
-    <div className="col-sm-6 col-md-4 col-lg-3">
+    <div
+      className="col-sm-6 col-md-4 col-lg-3"
+      data-test="trip-item"
+      data-testid="trip"
+    >
       <figure className="card card-product">
         <div className="img-wrap">
           <img src={"images/items/" + trip.id + ".jpg"} alt="name " />
@@ -99,6 +118,7 @@ function Trip({ addToWishlist, ...props }) {
               type="button"
               className="btn btn-link btn-outline"
               onClick={() => addToWishlist(trip)}
+              data-test="add-to-wishlist"
             >
               <i className="fa fa-shopping-cart" /> Add to Wishlist
             </button>

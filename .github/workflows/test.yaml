@@ -8,11 +8,12 @@ on:
       - CODEOWNERS
       - .gitignore
       - .github/**
+      - amplify/**
 
 name: Testing
 
 jobs:
-  test:
+  test-unit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -25,4 +26,34 @@ jobs:
           npm install
       - name: Run tests
         run: |
-          npm run test
+          npm run test -- --silent --maxWorkers=2gi
+  test-component:
+    # needs: test-unit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install dependencies
+        run: |
+          npm install
+      - name: Run tests
+        run: |
+          npm run test-component
+  test-e2e:
+    # needs: test-component
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install dependencies
+        run: |
+          npm install
+      - name: Run tests
+        run: |
+          npm run start & npm run test-e2e
